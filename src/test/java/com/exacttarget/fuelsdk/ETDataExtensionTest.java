@@ -36,6 +36,8 @@ package com.exacttarget.fuelsdk;
 
 import java.util.List;
 
+import com.nidongara.flamessdk.*;
+import com.nidongara.flamessdk.*;
 import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -47,7 +49,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import static com.exacttarget.fuelsdk.ETResult.Status.OK;
+import static com.nidongara.flamessdk.ETResult.Status.OK;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ETDataExtensionTest {

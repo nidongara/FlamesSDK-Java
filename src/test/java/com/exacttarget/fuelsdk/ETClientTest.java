@@ -37,6 +37,8 @@ package com.exacttarget.fuelsdk;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import com.nidongara.flamessdk.*;
+import com.nidongara.flamessdk.*;
 import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;

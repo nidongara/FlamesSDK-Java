@@ -37,6 +37,8 @@ package com.exacttarget.fuelsdk;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nidongara.flamessdk.*;
+import com.nidongara.flamessdk.*;
 import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;

@@ -34,6 +34,8 @@
 
 package com.exacttarget.fuelsdk;
 
+import com.nidongara.flamessdk.ETConfiguration;
+import com.nidongara.flamessdk.ETSdkException;
 import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;

@@ -5,11 +5,11 @@
                              http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.exacttarget</groupId>
-  <artifactId>fuelsdk</artifactId>
-  <version>1.1.2</version>
-  <name>Salesforce Marketing Cloud Java SDK</name>
-  <description>Salesforce Marketing Cloud Java SDK</description>
-  <url>https://github.com/salesforce-marketingcloud/FuelSDK-Java</url>
+  <artifactId>flamessdk</artifactId>
+  <version>1.0.0</version>
+  <name>Salesforce Marketing Cloud Java SDK with Proxy</name>
+  <description>Salesforce Marketing Cloud Java SDK with proxy configuration</description>
+  <url>https://github.com/nidongara/FlamesSDK-Java</url>
   <licenses>
     <license>
       <name>BSD 3-Clause License</name>
@@ -17,18 +17,49 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  <developers>
-    <developer>
-      <name>Ian Murdock</name>
-      <email>imurdock@salesforce.com</email>
-      <organization>ExactTarget</organization>
-      <organizationUrl>http://code.exacttarget.com</organizationUrl>
-    </developer>
-  </developers>
+  <profiles>
+    <profile>
+      <id>java8-doclint-disabled</id>
+      <activation>
+        <jdk>[1.8,)</jdk>
+      </activation>
+      <properties>
+        <javadoc.opts>-Xdoclint:none</javadoc.opts>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>release-sign-artifacts</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.5</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
   <scm>
-    <connection>scm:git:git@github.com:salesforce-marketingcloud/FuelSDK-Java</connection>
-    <developerConnection>scm:git:git@github.com:salesforce-marketingcloud/FuelSDK-Java</developerConnection>
-    <url>git@github.com:salesforce-marketingcloud/FuelSDK-Java</url>
+    <connection>scm:git:git@github.com:nidongara/FlamesSDK-Java</connection>
+    <developerConnection>scm:git:git@github.com:nidongara/FlamesSDK-Java</developerConnection>
+    <url>git@github.com:nidongara/FlamesSDK-Java</url>
   </scm>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -130,6 +161,9 @@
             <goals>
               <goal>jar</goal>
             </goals>
+            <configuration>
+              <additionalparam>${javadoc.opts}</additionalparam>
+            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -154,50 +188,6 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>1.5</version>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-<!--
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>2.4.1</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <shadedArtifactAttached>true</shadedArtifactAttached>
-              <shadedClassifierName>shaded</shadedClassifierName>
-              <filters>
-                <filter>
-                  <artifact>*:*</artifact>
-                  <excludes>
-                    <exclude>META-INF/*.SF</exclude>
-                    <exclude>META-INF/*.DSA</exclude>
-                    <exclude>META-INF/*.RSA</exclude>
-                  </excludes>
-                </filter>
-              </filters>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
--->
-      <!-- generate Java source from WSDL -->
       <plugin>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-codegen-plugin</artifactId>

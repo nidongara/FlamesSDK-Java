@@ -37,6 +37,8 @@ package com.exacttarget.fuelsdk;
 import java.util.Date;
 import java.util.List;
 
+import com.nidongara.flamessdk.ETApiObject;
+import com.nidongara.flamessdk.ETSdkException;
 import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
