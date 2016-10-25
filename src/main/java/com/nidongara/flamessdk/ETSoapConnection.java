@@ -42,6 +42,7 @@ import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPFactory;
 
+import com.nidongara.flamessdk.internal.PartnerAPI;
 import org.apache.cxf.configuration.jsse.TLSClientParameters;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.endpoint.Endpoint;
@@ -54,8 +55,7 @@ import org.apache.cxf.transport.http.HTTPConduit;
 import org.apache.cxf.transports.http.configuration.HTTPClientPolicy;
 import org.apache.log4j.Logger;
 
-import com.exacttarget.fuelsdk.internal.PartnerAPI;
-import com.exacttarget.fuelsdk.internal.Soap;
+import com.nidongara.flamessdk.internal.Soap;
 
 /**
  * An <code>ETSoapConnection</code> represents an active

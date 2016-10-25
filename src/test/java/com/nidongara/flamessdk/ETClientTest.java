@@ -32,7 +32,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-package com.exacttarget.fuelsdk;
+package com.nidongara.flamessdk;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
