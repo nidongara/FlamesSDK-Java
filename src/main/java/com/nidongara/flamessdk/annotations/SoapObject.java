@@ -34,7 +34,8 @@
 
 package com.nidongara.flamessdk.annotations;
 
-import com.nidongara.flamessdk.internal.APIObject;
+
+import com.exacttarget.fuelsdk.internal.APIObject;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
