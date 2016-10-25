@@ -1,5 +1,5 @@
-Salesforce Marketing Cloud Java SDK
-===================================
+Salesforce Marketing Cloud Java SDK with Proxy
+==============================================
 
 The Salesforce Marketing Cloud Java SDK enables developers to easily
 access the Salesforce Marketing Cloud (formerly ExactTarget) via the
