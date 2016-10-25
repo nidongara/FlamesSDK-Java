@@ -9,7 +9,7 @@ Java platform. Among other things, the SDK:
   access tokens
 
 * enables developers to access both Marketing Cloud SOAP
-  and REST APIs in the same session
+  and REST APIs in the same session with or without proxies.
 
 * exposes simplified versions of the most commonly used Marketing
   Cloud objects and methods as Java native objects
