@@ -82,6 +82,7 @@ public class ETClient {
     private String endpoint = null;
     private String authEndpoint = null;
     private String soapEndpoint = null;
+    private ETProxy etProxy;
 
     private Boolean autoHydrateObjects = true;
 
@@ -107,13 +108,14 @@ public class ETClient {
     public ETClient(String file)
         throws ETSdkException
     {
-        this(new ETConfiguration(file));
+        this(new ETConfiguration(file),null);
     }
 
-    public ETClient(ETConfiguration configuration)
+    public ETClient(ETConfiguration configuration, ETProxy etProxy)
         throws ETSdkException
     {
         this.configuration = configuration;
+        this.etProxy = etProxy;
 
         clientId = configuration.get("clientId");
         clientSecret = configuration.get("clientSecret");
@@ -141,9 +143,9 @@ public class ETClient {
         }
 
         if (clientId != null && clientSecret != null) {
-            authConnection = new ETRestConnection(this, authEndpoint, true);
+            authConnection = new ETRestConnection(this, authEndpoint, true,etProxy);
             requestToken();
-            restConnection = new ETRestConnection(this, endpoint);
+            restConnection = new ETRestConnection(this, endpoint,etProxy);
             if (soapEndpoint == null) {
                 //
                 // If a SOAP endpoint isn't specified automatically determine it:
@@ -155,7 +157,7 @@ public class ETClient {
                 JsonObject jsonObject = jsonParser.parse(responsePayload).getAsJsonObject();
                 soapEndpoint = jsonObject.get("url").getAsString();
             }
-            soapConnection = new ETSoapConnection(this, soapEndpoint, accessToken);
+            soapConnection = new ETSoapConnection(this, soapEndpoint, accessToken,etProxy);
         } else {
             if (username == null || password == null) {
                 throw new ETSdkException("must specify either " +
@@ -167,7 +169,7 @@ public class ETClient {
             }
             soapConnection = new ETSoapConnection(this, soapEndpoint,
                                                   username,
-                                                  password);
+                                                  password,etProxy);
         }
 
         if (configuration.isFalse("autoHydrateObjects")) {
