@@ -63,13 +63,15 @@ public class ETRestConnection {
 
     private boolean isAuthConnection = false;
 
-    public ETRestConnection(ETClient client, String endpoint)
+    private ETProxy etProxy = null;
+
+    public ETRestConnection(ETClient client, String endpoint, ETProxy etProxy)
         throws ETSdkException
     {
-        this(client, endpoint, false);
+        this(client, endpoint, false, etProxy);
     }
 
-    public ETRestConnection(ETClient client, String endpoint, boolean isAuthConnection)
+    public ETRestConnection(ETClient client, String endpoint, boolean isAuthConnection, ETProxy etProxy)
         throws ETSdkException
     {
         this.client = client;
@@ -77,6 +79,8 @@ public class ETRestConnection {
         this.endpoint = endpoint;
 
         this.isAuthConnection = isAuthConnection;
+
+        this.etProxy = etProxy;
     }
 
     public Response get(String path)
@@ -199,7 +203,11 @@ public class ETRestConnection {
 
         HttpURLConnection connection = null;
         try {
-            connection = (HttpURLConnection) url.openConnection();
+            if(etProxy!=null){
+                connection = (HttpURLConnection) url.openConnection(etProxy.getRestProxy());
+            }else{
+                connection = (HttpURLConnection) url.openConnection();
+            }
             connection.setRequestMethod(method.toString());
         } catch (ProtocolException ex) {
             throw new ETSdkException("error setting request method: " + method.toString(), ex);
@@ -268,6 +276,10 @@ public class ETRestConnection {
         }
 
         return connection;
+    }
+
+    public ETProxy getEtProxy() {
+        return etProxy;
     }
 
     private String receiveResponse(HttpURLConnection connection)
