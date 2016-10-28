@@ -1,7 +1,7 @@
 <definitions targetNamespace="http://exacttarget.com/wsdl/partnerAPI" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://exacttarget.com/wsdl/partnerAPI">
   <types>
     <schema elementFormDefault="qualified" targetNamespace="http://exacttarget.com/wsdl/partnerAPI" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
-      <import id="APIFault" schemaLocation="https://webservice.exacttarget.com/ETFrameworkFault.xsd" namespace="urn:fault.partner.exacttarget.com" />
+      <import id="APIFault" schemaLocation="./ETFrameworkFault.xsd" namespace="urn:fault.partner.exacttarget.com" />
       <simpleType name="instanceid">
         <restriction base="xsd:string">
           <pattern value="\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\}" />
