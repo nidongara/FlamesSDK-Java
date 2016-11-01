@@ -39,3 +39,23 @@ The easiest way to install the Java SDK is via Maven&mdash;simply add the follow
 Maven will automatically resolve, download, and install all dependencies for you.
 
 Once you have the SDK installed, you'll need to obtain a client ID and client secret from App Center and place them in `fuelsdk.properties` using `src/main/resources/fuelsdk.properties.template` as a starting template. Theses values authenticate you to the Saleforce Marketing Cloud API. Please see https://code.exacttarget.com/getting-started/setting-your-development-environment for more information about how to use App Center to get a client ID and client secret.
+
+
+Example
+-------
+```
+public ETClient getETClient(){
+    	if(etClient == null){
+    		ETConfiguration configuration = new ETConfiguration();
+        	configuration.set("clientId",exactTargetCredentials.getClientId());
+        	configuration.set("clientSecret",exactTargetCredentials.getClientSecret());
+        	try {
+				ETProxy etProxy  = new ETProxy(ProxyServerType.HTTP.name(),"example.proxy.com",3129);
+    			etClient = new ETClient(configuration, etProxy);
+    		} catch (ETSdkException e) {
+    			e.printStackTrace();
+    		}
+    	}
+    	return etClient;
+    }
+```
