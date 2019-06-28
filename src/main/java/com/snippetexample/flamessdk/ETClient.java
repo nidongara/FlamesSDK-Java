@@ -348,7 +348,6 @@ public class ETClient {
             if (refreshToken == null) {
                 logger.info("Null token found. Requesting new auth token.");
                 requestToken();
-                //throw new ETSdkException("refreshToken == null");
             }
         }
 
