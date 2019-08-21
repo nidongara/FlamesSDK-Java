@@ -346,11 +346,12 @@ public class ETClient {
             logger.debug("refreshing access token...");
 
             if (refreshToken == null) {
-                throw new ETSdkException("refreshToken == null");
+                logger.info("Null token found. Requesting new auth token.");
+                requestToken();
             }
         }
 
-        requestToken(refreshToken);
+
 
         soapConnection.setAccessToken(accessToken);
 

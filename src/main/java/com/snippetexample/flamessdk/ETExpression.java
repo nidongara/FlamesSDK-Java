@@ -38,8 +38,6 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.exacttarget.fuelsdk.ETExpressionParser;
-import com.exacttarget.fuelsdk.ParseException;
 import com.snippetexample.flamessdk.annotations.PrettyPrint;
 import org.apache.log4j.Logger;
 

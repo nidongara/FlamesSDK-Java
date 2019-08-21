@@ -38,7 +38,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.exacttarget.fuelsdk.ParseException;
 import com.snippetexample.flamessdk.annotations.PrettyPrint;
 
 public class ETFilter extends ETObject {
